@@ -25,6 +25,7 @@ Route::get("/logout",[LoginController::class,"logout"])->name("logout");
 Route::prefix("account")->group(function () {
     Route::middleware("multiauth")->group(function(){
         Route::get("dashboard",[DashboardController::class,"index"])->name("account.dashboard");
+        Route::get("profile",[UserController::class,"profile"])->name("account.profile");
     });
     
     Route::middleware("adminAuth")->group(function(){

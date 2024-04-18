@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
     protected $fillable = [
         'uuid',
         'username',
@@ -24,7 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    // one users has many to every children and to parent 
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -1,12 +1,11 @@
-@extends('layouts.master', ['title' => 'Management Pegawai'])
+@extends('layouts.master', ['title' => 'Edit Pegawai'])
 @section('content')
     <div class="page-heading">
-        <h3>Management Pegawai</h3>
+        <h3>Edit Pegawai</h3>
     </div>
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-12">
-                {{-- ini sebagai form update --}}
                 @include('components.alert')
                 <div class="card">
                     <div class="card-body">
@@ -30,14 +29,7 @@
                                     <label class="mb-2" for="exampleFormControlInput4">Email</label>
                                     <input type="text"  class="form-control" value="{{ $data->email }}" id="exampleFormControlInput4" placeholder="Email " name="email">
                                 </div>
-                                <div class="form-group">
-                                    <label class="mb-2" for="exampleFormControlInput5">Status</label>
-                                    <select name="status" id="exampleFormControlInput5" class="form-control">
-                                        <option value="" selected disabled>Pilih Status</option>
-                                        <option value="active" {{ $data->status == 'active' ? 'selected' : '' }}>Aktif</option>
-                                        <option value="inactive" {{ $data->status == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
-                                    </select>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label class="mb-2" for="exampleFormControlInput2">Password</label>
                                     <input type="password"  class="form-control"  id="exampleFormControlInput3" placeholder="password " name="password">

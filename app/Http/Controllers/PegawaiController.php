@@ -65,9 +65,9 @@ class PegawaiController extends Controller
         $this->servicePegawai->validasi_update($request);
         if($this->servicePegawai->update($request,$id))
         {
-            return redirect()->route('management-pegawai.index')->with('success', 'Data pegawai berhasil di ubah');
+            return redirect()->back()->with('success', 'Data pegawai berhasil di ubah');
         }
-        return redirect()->route('management-pegawai.index')->with('error', 'Data pegawai gagal di ubah');
+        return redirect()->back()->with('error', 'Data pegawai gagal di ubah');
     
     }
 

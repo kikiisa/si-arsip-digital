@@ -14,11 +14,12 @@ class Arsip extends Model
     {
         return $this->belongsTo(User::class, "user_id");
     }
-
+    // reverse belongsto many
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, "kategori_id");
     }
+    // one to many and many belongsto kategory
     public function getCreatedAtAttribute($date)
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-M-Y');

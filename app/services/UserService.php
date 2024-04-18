@@ -26,6 +26,45 @@ class UserService
         ]);
     }
 
+    public function updateValidasi($request)
+    {
+        if($request->password != null)
+        {
+            $this->validasi($request);
+        }else{
+            return $request->validate([
+                'username' => 'required',
+                'name' => 'required',
+                'email' => 'required|email',
+            ],[
+                'username.required' => 'Username harus diisi',
+                'name.required' => 'Nama harus diisi',
+                'email.required' => 'Email harus diisi',
+                'email.email' => 'format tidak sesuai'
+            ]);
+        }
+    }
+
+    public function update($request,$id)
+    {
+        $data = User::find($id);
+        if($request->password != null)
+        {
+            $data->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+        }else{
+            $data->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email, 
+            ]);
+        }
+        return $data;
+    }
     public function create($request)
     {
         $existingUser = User::where('username', $request->username)->first();

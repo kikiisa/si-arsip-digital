@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pegawai;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -55,7 +57,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return response()->view("user.edit",[
+            "data" => User::all()->where("uuid",$id)->first(),
+        ]);
     }
 
     /**
@@ -63,9 +67,26 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->userServices->updateValidasi($request);
+        if($this->userServices->update($request,$id))
+        {
+            return redirect()->back()->with("success", "Data user berhasil di Update");
+        }
+        return redirect()->back()->with("error", "Data user gagal di Update");
     }
 
+    public function profile()
+    {
+        if(Auth::check())
+        {
+            $data = User::findOrFail(Auth::user()->id);
+            return response()->view("profile.operator",["data" => $data]);
+        }else{
+            $data = Pegawai::findOrFail(Auth::guard("pegawais")->user()->id);
+            return response()->view("profile.pegawai",["data" => $data]);
+        }
+
+    }
     /**
      * Remove the specified resource from storage.
      */

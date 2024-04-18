@@ -15,7 +15,8 @@
     <link rel="stylesheet" crossorigin href="{{asset('assets/compiled/css/app-dark.css')}}">
     <link rel="stylesheet" crossorigin href="{{asset('assets/compiled/css/iconly.css')}}">
     <link rel="stylesheet" href="{{asset("assets/extensions/sweetalert2/sweetalert2.min.css")}}">
-    
+    <link rel="stylesheet" href="{{asset("assets/extensions/simple-datatables/style.css")}}">
+    <link rel="stylesheet" crossorigin href="{{asset("assets/compiled/css/table-datatable.css")}}">
 </head>
 <body>
     <script src="{{asset('assets/static/js/initTheme.js')}}"></script>
@@ -62,8 +63,8 @@
                                 </li>
                             @endif
                             <li class="menu-item  ">
-                                <a href="index.html" class='menu-link'>
-                                    <span><i class="bi bi-table"></i> Profil</span>
+                                <a href="{{Route("account.profile")}}" class='menu-link'>
+                                    <span><i class="bi bi-table"></i> Profile</span>
                                 </a>
                             </li>
                             <li class="menu-item  ">
@@ -99,8 +100,8 @@
     <script src="{{asset('assets/static/js/pages/horizontal-layout.js')}}"></script>
     <script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('assets/compiled/js/app.js')}}"></script>
-    <script src="{{asset('assets/extensions/apexcharts/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/static/js/pages/dashboard.js')}}"></script>
+    <script src="{{asset('assets/extensions/simple-datatables/umd/simple-datatables.js')}}"></script>
+    <script src="{{asset('assets/static/js/pages/simple-datatables.js')}}"></script>
 </body>
 
 </html>

@@ -11,6 +11,7 @@ class Pegawai extends Authenticatable
 {
     use Notifiable;
     use HasFactory;
+    // ini untuk protected table
     protected $fillable = ["uuid","nip","name","username","email","profile","password","status"];
 
 }

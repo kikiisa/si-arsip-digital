@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Services;
-
 use App\Models\Pegawai;
 use Illuminate\Support\Facades\File;
 use Ramsey\Uuid\Uuid;
-
 class PegawaiService
 {
 
@@ -18,6 +15,7 @@ class PegawaiService
             'email' => 'required|unique:pegawais',
             'password' => 'required|sometimes|min:8',
             'confirm' => 'required|same:password|sometimes',
+            'status' => 'required'
             
         ],[
             'nip.required' => 'NIP harus diisi',
@@ -42,6 +40,7 @@ class PegawaiService
             'email' => 'required',
             'password' => 'sometimes',
             'confirm' => 'sometimes|same:password',
+            'status' => 'required'
             
         ],[
             'nip.required' => 'NIP harus diisi',
@@ -79,7 +78,7 @@ class PegawaiService
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password == null ? $data->password : bcrypt($request->password),
-            'status' => $request->status
+            'status' => $request->status,
         ]);
     }
     public function delete($id)
