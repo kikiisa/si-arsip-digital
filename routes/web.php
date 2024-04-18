@@ -26,6 +26,7 @@ Route::prefix("account")->group(function () {
     Route::middleware("multiauth")->group(function(){
         Route::get("dashboard",[DashboardController::class,"index"])->name("account.dashboard");
         Route::get("profile",[UserController::class,"profile"])->name("account.profile");
+        Route::resource("management-arsip",ArsipController::class);
     });
     
     Route::middleware("adminAuth")->group(function(){
@@ -34,7 +35,6 @@ Route::prefix("account")->group(function () {
         // crud pegawai
         Route::resource("management-pegawai",PegawaiController::class);
         // crud arsip
-        Route::resource("management-arsip",ArsipController::class);
         // crud admin
         Route::resource("management-admin",UserController::class);
     });

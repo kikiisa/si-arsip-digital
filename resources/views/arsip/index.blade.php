@@ -9,9 +9,11 @@
                 @include('components.alert')
                 <div class="card">
                     <div class="card-body">
-                        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#default">
-                            <i class="bi bi-plus"></i> Tambah Arsip
-                        </button>
+                        @if (Auth::check())
+                            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#default">
+                                <i class="bi bi-plus"></i> Tambah Arsip
+                            </button>
+                        @endif
                         
                         <div class="table-responsive">
                             <table class="table table-lg">
@@ -43,8 +45,10 @@
                                             <form action="{{ Route('management-arsip.destroy', $item->id) }}" method="post">
                                                 @method("DELETE")
                                                 @csrf
-                                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                                <a href="{{Route("management-arsip.edit",$item->uuid)}}" class="btn btn-warning"><i class="bi bi-pen"></i></a>
+                                                @if (Auth::check())
+                                                    <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    <a href="{{Route("management-arsip.edit",$item->uuid)}}" class="btn btn-warning"><i class="bi bi-pen"></i></a>    
+                                                @endif
                                                 <a href="{{Route("management-arsip.show",$item->uuid)}}" class="btn btn-info"><i class="bi bi-display"></i></a>
                                             </form>
                                         </td>

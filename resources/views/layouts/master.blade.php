@@ -51,17 +51,18 @@
                                         <span><i class="bi bi-table"></i> Data Pegawai</span>
                                     </a>
                                 </li>
-                                <li class="menu-item  ">
-                                    <a href="{{Route("management-arsip.index")}}" class='menu-link'>
-                                        <span><i class="bi bi-table"></i> Data Arsip</span>
-                                    </a>
-                                </li>
+                                
                                 <li class="menu-item  ">
                                     <a href="{{Route("management-admin.index")}}" class='menu-link'>
                                         <span><i class="bi bi-table"></i> Data Petugas</span>
                                     </a>
                                 </li>
                             @endif
+                            <li class="menu-item  ">
+                                <a href="{{Route("management-arsip.index")}}" class='menu-link'>
+                                    <span><i class="bi bi-table"></i> Data Arsip</span>
+                                </a>
+                            </li>
                             <li class="menu-item  ">
                                 <a href="{{Route("account.profile")}}" class='menu-link'>
                                     <span><i class="bi bi-table"></i> Profile</span>

@@ -28,19 +28,29 @@ class LoginController extends Controller
         if(Auth::attempt($credential))
         {
             $request->session()->regenerate();
+            
             return redirect()->route("account.dashboard")->with("success", "Selamat datang ".Auth::user()->name);
         }elseif(Auth::guard("pegawais")->attempt($credential))
         {
+           
             $request->session()->regenerate();
-            return redirect()->route("account.dashboard")->with("success", "Selamat datang ".Auth::guard("pegawais")->user()->name);
+            if(Auth::guard("pegawais")->user()->status != "active")
+            {
+                $this->logout("nonaktif");
+            }else{
+                return redirect()->route("account.dashboard")->with("success", "Selamat datang ".Auth::guard("pegawais")->user()->name);
+            }
         }
         throw Valid::withMessages(['message' => 'Maaf Email dan Password anda tidak terdaftar']);   
     }
 
-    public function logout()
+    public function logout($message = null)
     {
         if(Auth::guard("pegawais")->check()){
             Auth::guard("pegawais")->logout();
+            if ($message == "nonaktif") {
+                return redirect()->route("account.login")->with("error","Akun Anda Dalam Status Nonaktif");
+            }
             return redirect()->route("account.login")->with("success","Anda Telah Logout");
         }
         if(Auth::check()){
