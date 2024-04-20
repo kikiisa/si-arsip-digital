@@ -15,7 +15,7 @@ class PegawaiService
             'email' => 'required|unique:pegawais',
             'password' => 'required|sometimes|min:8',
             'confirm' => 'required|same:password|sometimes',
-            'status' => 'required'
+            
             
         ],[
             'nip.required' => 'NIP harus diisi',
