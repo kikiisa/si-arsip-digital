@@ -33,6 +33,8 @@ class AuthSeeder extends Seeder
             "password" => bcrypt("admin123"),
         ]);
 
+        // 
+
 
     }
 }
